@@ -26,7 +26,7 @@ class Gettext < Formula
                           "--disable-silent-rules",
                           "--disable-debug",
                           "--prefix=#{prefix}",
-                          ("--with-included-gettext" if OS.mac?),
+                          "--with-included-gettext",
                           "--with-included-glib",
                           "--with-included-libcroco",
                           "--with-included-libunistring",
