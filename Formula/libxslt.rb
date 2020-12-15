@@ -3,7 +3,7 @@ class Libxslt < Formula
   homepage "http://xmlsoft.org/XSLT/"
   url "http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz"
   sha256 "98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f"
-  revision 1 unless OS.mac?
+  revision 2 unless OS.mac?
 
   livecheck do
     url "http://xmlsoft.org/sources/"
@@ -37,7 +37,6 @@ class Libxslt < Formula
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}",
-                          ("--without-crypto" unless OS.mac?),
                           "--without-python",
                           "--with-libxml-prefix=#{Formula["libxml2"].opt_prefix}"
     system "make"
