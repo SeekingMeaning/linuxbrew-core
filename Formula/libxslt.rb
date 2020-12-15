@@ -37,7 +37,6 @@ class Libxslt < Formula
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}",
-                          ("--without-crypto" unless OS.mac?),
                           "--without-python",
                           "--with-libxml-prefix=#{Formula["libxml2"].opt_prefix}"
     system "make"
