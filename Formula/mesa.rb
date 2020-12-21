@@ -7,7 +7,7 @@ class Mesa < Formula
   sha256 "af751b49bb2ab0264d58c31e73d869e80333de02b2d1becc93f1b28c67aa780f"
   license "MIT"
   head "https://gitlab.freedesktop.org/mesa/mesa.git"
-  revision 2 unless OS.mac?
+  revision 3 unless OS.mac?
 
   livecheck do
     url :stable
@@ -17,7 +17,6 @@ class Mesa < Formula
     sha256 "5f27f0ebe825e601032269563dc0952469d717c36330f1f7168132142731818a" => :big_sur
     sha256 "0e11b188a0f24b12fccbfb7e0a20843ac73bfd4184be0a6c4d1f57e0ff942d7d" => :catalina
     sha256 "5c68d4275cddb201114e2a1f5bf3bba0909e66b5fac3f67388aab0823dcc77eb" => :mojave
-    sha256 "782d5e14ae7f8d30077422b76d074510f09bd3a800ffeb5a78cf5592a4a73d70" => :x86_64_linux
   end
 
   depends_on "meson" => :build
@@ -50,7 +49,7 @@ class Mesa < Formula
     depends_on "wayland"
     depends_on "wayland-protocols"
     depends_on "linuxbrew/xorg/libomxil-bellagio"
-    depends_on "linuxbrew/xorg/libva-internal"
+    depends_on "linuxbrew/xorg/libva"
     depends_on "linuxbrew/xorg/libvdpau"
   end
 
