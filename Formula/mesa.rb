@@ -93,6 +93,7 @@ class Mesa < Formula
         args << "-Ddri3=true"
         args << "-Ddri-drivers=auto"
         args << "-Dgallium-drivers=auto"
+        args << "-Dgallium-omx=disabled"
         args << "-Degl=true"
         args << "-Dgbm=true"
         args << "-Dopengl=true"
