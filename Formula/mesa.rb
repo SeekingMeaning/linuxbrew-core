@@ -49,7 +49,6 @@ class Mesa < Formula
     depends_on "libdrm"
     depends_on "wayland"
     depends_on "wayland-protocols"
-    depends_on "linuxbrew/xorg/libomxil-bellagio"
     depends_on "linuxbrew/xorg/libva"
     depends_on "linuxbrew/xorg/libvdpau"
   end
