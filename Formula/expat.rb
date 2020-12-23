@@ -4,6 +4,7 @@ class Expat < Formula
   url "https://github.com/libexpat/libexpat/releases/download/R_2_2_10/expat-2.2.10.tar.xz"
   sha256 "5dfe538f8b5b63f03e98edac520d7d9a6a4d22e482e5c96d4d06fcc5485c25f2"
   license "MIT"
+  revision 1 if OS.linux?
 
   livecheck do
     url :stable
@@ -18,7 +19,6 @@ class Expat < Formula
     sha256 "1a8b10b3ce11187fbc9d26013ac5939d69f53ad7e0768ecb3d026ae6007005ac" => :catalina
     sha256 "0715be3a1c1f7472cb662c640b263ed8c78da9cc20ebadb3f8df40e2300a87a8" => :mojave
     sha256 "f1d65a87a4535918db8fb7cae639335e70e0a0ac780a000f5ddb4685a47526e2" => :high_sierra
-    sha256 "838fc570ed11945abbb0ac7c663b0d3730d27952a479d2f730e5bbac1cbbad1f" => :x86_64_linux
   end
 
   head do
@@ -31,15 +31,11 @@ class Expat < Formula
 
   keg_only :provided_by_macos
 
-  # On Ubuntu 14, fix the error: You do not have support for any sources of high quality entropy
-  depends_on "libbsd" unless OS.mac?
-
   def install
     cd "expat" if build.head?
     system "autoreconf", "-fiv" if build.head?
     args = ["--prefix=#{prefix}", "--mandir=#{man}"]
     args << "--with-docbook" if build.head?
-    args << "--with-libbsd" unless OS.mac?
     system "./configure", *args
     system "make", "install"
   end
