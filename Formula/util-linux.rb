@@ -23,10 +23,13 @@ class UtilLinux < Formula
 
   keg_only "macOS provides the uuid.h header" if OS.mac?
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
-  depends_on "libtool" => :build
-  depends_on "pkg-config" => :build
+  if OS.mac?
+    depends_on "autoconf" => :build
+    depends_on "automake" => :build
+    depends_on "libtool" => :build
+    depends_on "pkg-config" => :build
+  end
+
   depends_on "gettext"
 
   uses_from_macos "ncurses"
