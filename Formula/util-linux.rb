@@ -29,7 +29,6 @@ class UtilLinux < Formula
   depends_on "pkg-config" => :build
   depends_on "gettext"
 
-  uses_from_macos "bison" => :build
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
@@ -48,16 +47,18 @@ class UtilLinux < Formula
     ]
   end
 
-  # Fix build for MacOS
-  # Remove in the next release
-  # Also remove autoconf/automake/libtool/pkg-config dependencies and autogen.sh call
-  patch do
-    url "https://github.com/karelzak/util-linux/commit/71ba2792ab3f96b5f5d5d3b0a68d35ecfd0f93a2.patch?full_index=1"
-    sha256 "bc5188d3f41a7f248ba622f51c8ab8fed0e05355cbe20a5d3b02bbc274e2c7b4"
+  if OS.mac?
+    # Fix build for MacOS
+    # Remove in the next release
+    # Also remove autoconf/automake/libtool/pkg-config dependencies and autogen.sh call
+    patch do
+      url "https://github.com/karelzak/util-linux/commit/71ba2792ab3f96b5f5d5d3b0a68d35ecfd0f93a2.patch?full_index=1"
+      sha256 "bc5188d3f41a7f248ba622f51c8ab8fed0e05355cbe20a5d3b02bbc274e2c7b4"
+    end
   end
 
   def install
-    system "./autogen.sh"
+    system "./autogen.sh" if OS.mac?
 
     args = [
       "--disable-dependency-tracking",
